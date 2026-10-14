@@ -345,11 +345,66 @@ h1{font-size:clamp(3.5rem,7.7vw,8rem);line-height:.9;letter-spacing:-.085em;font
 @media(max-width:760px),(prefers-reduced-motion:reduce){.section-photo img{transition:none}.section-photo:hover img{transform:none}}
 @media(max-width:760px){.float-card{backdrop-filter:none;-webkit-backdrop-filter:none}.feature{backdrop-filter:none;-webkit-backdrop-filter:none}.nav{backdrop-filter:none;-webkit-backdrop-filter:none;background:#100a18}}
 
+
+/* Theme 004.2 — crimson romance art direction */
+:root{--bond-night:#100407;--bond-plum:#260711;--bond-rose:#ff5268;--bond-peach:#ffb1a7;--bond-lilac:#e9a3b2;--bond-gold:#ffcfb0;--bond-ink:#fff4f3;--bond-muted:#d8b8bc;--bond-line:rgba(255,220,225,.14)}
+body{background:#100407;color:#fff4f3}
+body:before{background:radial-gradient(ellipse at 14% 10%,#a20d332e,transparent 36%),radial-gradient(ellipse at 88% 34%,#680b2728,transparent 34%),radial-gradient(ellipse at 48% 100%,#6d102327,transparent 46%)}
+#theme002-note{background:#100407;color:#ffd0d6;border-color:#ff52681e}
+.brand-mark{background:linear-gradient(135deg,#ff5268,#ffcfb0);color:#330611;box-shadow:0 0 26px #ff52682a}
+.brand .gradient,.gradient{background:linear-gradient(100deg,#ff5268 0%,#ff9d9f 48%,#ffd0b0 100%)!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;-webkit-text-fill-color:transparent!important}
+.btn.primary{background:linear-gradient(115deg,#ff5268,#ffb1a7);color:#2b0610;box-shadow:0 10px 30px #ff27401c}
+.btn.primary:hover{background:linear-gradient(115deg,#ff7787,#ffd0b0);box-shadow:0 12px 35px #ff27402c}
+.eyebrow{color:#ffd0d6;border-color:#ff52683a}
+.dot{background:#ff5268;box-shadow:0 0 0 5px #ff52681c,0 0 16px #ff5268}
+.hero:before{background:radial-gradient(ellipse at 76% 48%,#c51c4930,transparent 30%),radial-gradient(ellipse at 70% 65%,#9d16301c,transparent 35%);animation:none}
+.hero:after{content:none}
+.orb{background:radial-gradient(ellipse at 32% 20%,#fff0ed 0%,#ffb1b7 8%,#f24d6b 20%,#b61c4e 40%,#67132f 62%,#210611 82%);box-shadow:inset -28px -32px 65px #14030aa8,inset 22px 18px 52px #fff4,0 0 60px #f34d7220,0 40px 100px #05000680;animation:studioFloat 12s ease-in-out infinite}
+.orb:before,.orb:after{border-color:#ffb8c476;box-shadow:none}
+.orbit{border-color:#ff879847;box-shadow:none}.orbit.two{border-color:#ffb7b235}
+.heart{color:#ffe7e9;text-shadow:0 0 25px #ff52685c,0 0 65px #ff526824}
+.spark{color:#ffd0b0;text-shadow:0 0 12px #ff5268}
+.float-card{background:rgba(35,5,15,.92);border-color:#ff52682b;box-shadow:0 12px 35px #08000650;backdrop-filter:none;-webkit-backdrop-filter:none}
+.section-head .kicker,.kicker,.bond-label{color:#ff9da9}
+.feature{background:linear-gradient(145deg,#ff52680c,#ffffff02);border-color:#ff52681d;box-shadow:inset 0 1px #fff1;backdrop-filter:none;-webkit-backdrop-filter:none}
+.feature:before{background:none}.feature:after{color:#ff9da9}
+.feature-icon{background:#ff526817;border-color:#ff52682d}
+.step{border-color:#ff52682c}.step:after{background:linear-gradient(90deg,#ff5268,#ffcfb0)}
+.studio-marquee{display:none!important}
+.price-panel{background:radial-gradient(ellipse at 90% 0,#b51b3a22,transparent 45%),linear-gradient(135deg,#310812,#18050b);border-color:#ff52682d;box-shadow:0 25px 75px #0003}
+.pill{border-color:#ff526825}
+.faq details[open]{background:#ff52680b;border-color:#ff52684a}
+.modal{background:#080004e8}.dialog{background:#210710;border-color:#ff52682b}
+.dialog input,.dialog select{background:#100407;color:#fff5f5;border-color:#ff52682b}
+.dialog input:focus,.dialog select:focus{outline:2px solid #ff5268}
+.close{border-color:#ff52682b}
+.notice{background:#ffcfb00d;border-color:#ffcfb03a;color:#ffe3d4}
+#studio-progress{background:linear-gradient(90deg,#ff2449,#ff5268,#ffcfb0);box-shadow:0 0 12px #ff52682c}
+#studio-cursor{border-color:#ff5268}#studio-cursor.active{background:#ff5268;border-color:#ff5268}
+#studio-intro{background:#100407}
+.intro-track span{background:linear-gradient(90deg,#ff2449,#ffcfb0)}
+#studio-status{background:#ff5268;color:#24050d}
+.ritual-prompt{border-color:#ff526820;background:#ff526805;transition:background .18s,border-color .18s}
+.ritual-prompt:hover,.ritual-prompt[aria-pressed=true]{transform:none;border-color:#ff52689c;background:#ff526812}
+.ritual-prompt b{color:#ffcfb0}
+.ritual-result{border-left-color:#ff5268;background:#ff526807}
+.bond-intro:after{background:linear-gradient(180deg,#16040715,#16040755),url("https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=900&q=72") center 45%/cover no-repeat}
+.section-photo{border-color:#ff52682a;box-shadow:0 14px 38px #0800062e}
+.section-photo:after{background:linear-gradient(180deg,#10040705 35%,#100407a8)}
+.section-photo img{filter:saturate(1.05) contrast(1.02)}
+.price-photo{border-color:#ff52682a}
+@media(max-width:760px){
+ .hero:before{animation:none}
+ .orb{animation:none}
+ .studio-marquee{display:none!important}
+}
+@media(prefers-reduced-motion:reduce){.orb{animation:none!important}}
+
 </style>
 </head>
 <body>
 <div id="theme002-note">Theme 004 preview · The Bond Experience · built on Immersive Studio</div>
-<canvas id="gateway-flow-bg" aria-hidden="true"></canvas>
+
 <header class="wrap nav">
   <a class="brand" href="#" aria-label="Meet Cute home"><span class="brand-mark">♡</span><span>meet<span class="gradient">cute</span></span></a>
   <span class="nav-note">For the feeling you can’t fake</span>
@@ -500,38 +555,7 @@ form.addEventListener('submit',async e=>{
 });
 </script>
 
-<script>
-(() => {
- const canvas=document.getElementById("gateway-flow-bg");if(!canvas)return;
- const ctx=canvas.getContext("2d",{alpha:true});if(!ctx)return;
- const reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
- const saveData=!!(navigator.connection&&navigator.connection.saveData);
- const lowPower=reduced||saveData||window.innerWidth<520;
- let width=0,height=0,dpr=1,raf=0,lastFrame=0,visible=!document.hidden,paths=[];
- const count=()=>window.innerWidth<640?10:(lowPower?14:26);
- function point(t,a,b,c,d){const u=1-t;return{x:u*u*u*a.x+3*u*u*t*b.x+3*u*t*t*c.x+t*t*t*d.x,y:u*u*u*a.y+3*u*u*t*b.y+3*u*t*t*c.y+t*t*t*d.y};}
- function resize(){
-  dpr=Math.min(window.devicePixelRatio||1,lowPower?1:1.25);width=window.innerWidth;height=window.innerHeight;
-  canvas.width=Math.floor(width*dpr);canvas.height=Math.floor(height*dpr);canvas.style.width=width+"px";canvas.style.height=height+"px";ctx.setTransform(dpr,0,0,dpr,0,0);
-  paths=Array.from({length:count()},(_,i)=>({left:i%2===0,startY:(i/count())*height*1.3-height*.15,t:Math.random(),speed:.00022+Math.random()*.00035}));
-  draw(true);if(!lowPower&&visible)start();
- }
- function draw(staticFrame=false){
-  ctx.clearRect(0,0,width,height);const cx=width/2,cy=height/2;
-  paths.forEach(p=>{
-   const a={x:p.left?0:width,y:p.startY},b={x:p.left?cx*.38:width-cx*.38,y:p.startY},c={x:p.left?cx*.82:width-cx*.82,y:cy},d={x:cx,y:cy};
-   ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.bezierCurveTo(b.x,b.y,c.x,c.y,d.x,d.y);ctx.setLineDash([1,7]);ctx.strokeStyle="rgba(215,222,239,.11)";ctx.lineWidth=1;ctx.stroke();ctx.setLineDash([]);
-   if(!staticFrame){const pos=point(p.t,a,b,c,d);ctx.fillStyle="rgba(238,231,244,.58)";ctx.fillRect(pos.x-.8,pos.y-.8,1.6,1.6);p.t+=p.speed*2;if(p.t>1){p.t=0;p.startY+=(Math.random()-.5)*10;}}
-  });
- }
- function tick(time){raf=0;if(!visible||lowPower)return;if(time-lastFrame<33){raf=requestAnimationFrame(tick);return;}lastFrame=time;draw(false);raf=requestAnimationFrame(tick);}
- function start(){if(!raf&&visible&&!lowPower)raf=requestAnimationFrame(tick);}
- function stop(){if(raf)cancelAnimationFrame(raf);raf=0;}
- document.addEventListener("visibilitychange",()=>{visible=!document.hidden;if(visible)start();else stop();});
- window.addEventListener("resize",()=>{stop();resize();},{passive:true});
- resize();if(lowPower)canvas.style.opacity=".12";
-})();
-</script>
+
 
 
 <script>
