@@ -52,7 +52,6 @@
       </div>
     </div>
     <div class="field full"><label for="city">City / general area</label><input id="city" maxlength="120" required autocomplete="address-level2" placeholder="City or neighbourhood only"></div>
-    <div class="field full"><label for="about-you">A little about you <span class="fine">(optional)</span></label><textarea id="about-you" maxlength="500" placeholder="Your vibe, what you enjoy, or what makes a good conversation for you…"></textarea></div>
   </div>
 </div>
 
@@ -172,7 +171,6 @@ form.addEventListener('submit',async e=>{
   availability:document.getElementById('availability').value,
   contact_method:method.value,
   contact_details:contactInput.value.trim(),
-  about_you:document.getElementById('about-you').value.trim(),
   consent_status:true,
   terms_accepted:true
  };
