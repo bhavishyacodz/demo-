@@ -306,6 +306,45 @@ h1{font-size:clamp(3.5rem,7.7vw,8rem);line-height:.9;letter-spacing:-.085em;font
  .ritual-prompt,.feature,.step{transition:none!important}
 }
 
+
+/* Theme 004.1 — editorial photography + performance pass */
+:root{--photo-radius:22px}
+.section-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(190px,.58fr);align-items:center;gap:clamp(22px,5vw,68px);max-width:1100px;text-align:left}
+.section-head>*{grid-column:1}.section-head .kicker{grid-column:1}
+.section-head h2{grid-column:1;margin:12px 0 0;max-width:760px}
+.section-head p{grid-column:1;margin:0;max-width:570px}
+.section-photo{grid-column:2!important;grid-row:1 / span 3;position:relative;display:block;width:100%;height:clamp(170px,23vw,290px);overflow:hidden;border:1px solid #ffe8f22a;border-radius:var(--photo-radius);background:#26152e;box-shadow:0 18px 55px #08030d35;isolation:isolate}
+.section-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,#160b1b80);pointer-events:none}
+.section-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(.78);transition:transform .5s ease,filter .5s}
+.section-photo:hover img{transform:scale(1.025);filter:saturate(.95)}
+.section-photo figcaption{position:absolute;z-index:1;left:14px;bottom:12px;color:#fff6f6;font-size:9px;letter-spacing:.16em;text-transform:uppercase}
+.bond-intro{grid-template-columns:.8fr 1.2fr;gap:clamp(22px,5vw,68px)}
+.bond-intro:after{content:"";display:block;grid-column:2;grid-row:1;width:100%;height:clamp(150px,20vw,245px);border-radius:var(--photo-radius);border:1px solid #ffe8f22a;background:linear-gradient(180deg,#160b1b00,#160b1b38),url("https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=900&q=72") center 45%/cover no-repeat;box-shadow:0 18px 55px #08030d35}
+.bond-intro .bond-quote{grid-column:2;grid-row:1;margin:0;align-self:center;position:relative;z-index:1;padding:clamp(18px,3vw,34px);text-shadow:0 2px 22px #160b1b80}
+.bond-intro>div{grid-column:1;grid-row:1;align-self:center;position:relative;z-index:1}
+.price-panel{grid-template-columns:minmax(0,1fr) minmax(145px,.42fr) auto}
+.price-photo{grid-column:2;grid-row:1;display:block;height:clamp(160px,18vw,225px);overflow:hidden;border:1px solid #ffe8f22a;border-radius:20px;background:#24112d}
+.price-photo img{display:block;width:100%;height:100%;object-fit:cover}
+#benefits .section-photo img{object-position:center 42%}
+#how .section-photo img{object-position:center 50%}
+#faq .section-photo img{object-position:center 48%}
+@media(max-width:760px){
+ .section-head{grid-template-columns:1fr;gap:18px;text-align:center;margin-bottom:34px}
+ .section-head>*{grid-column:1!important}.section-head h2,.section-head p{grid-column:1!important}
+ .section-head h2{margin:10px 0}
+ .section-photo{grid-column:1!important;grid-row:auto!important;height:190px;width:min(100%,430px);margin:5px auto 0}
+ .bond-intro{grid-template-columns:1fr;gap:12px}
+ .bond-intro>div{grid-column:1;grid-row:1}
+ .bond-intro .bond-quote{grid-column:1;grid-row:2;margin-top:8px}
+ .bond-intro:after{grid-column:1;grid-row:3;height:190px}
+ .price-panel{grid-template-columns:1fr;text-align:center}
+ .price-photo{grid-column:1;grid-row:auto;height:180px;width:min(100%,430px);margin:0 auto}
+ .price-panel .btn{width:100%}
+}
+@media(max-width:480px){.section-photo{height:165px;border-radius:17px}.section-photo img{transition:none}}
+@media(max-width:760px),(prefers-reduced-motion:reduce){.section-photo img{transition:none}.section-photo:hover img{transform:none}}
+@media(max-width:760px){.float-card{backdrop-filter:none;-webkit-backdrop-filter:none}.feature{backdrop-filter:none;-webkit-backdrop-filter:none}.nav{backdrop-filter:none;-webkit-backdrop-filter:none;background:#100a18}}
+
 </style>
 </head>
 <body>
@@ -355,7 +394,7 @@ h1{font-size:clamp(3.5rem,7.7vw,8rem);line-height:.9;letter-spacing:-.085em;font
 </section>
 <section class="section" id="benefits">
   <div class="wrap">
-    <div class="section-head"><span class="kicker">BEYOND THE FIRST HELLO</span><h2>The magic is in <span class="gradient">the little things.</span></h2><p>A shared laugh. A curious question. Someone who remembers the small detail you thought nobody noticed. Connection often begins there.</p></div>
+    <div class="section-head"><span class="kicker">BEYOND THE FIRST HELLO</span><h2>The magic is in <span class="gradient">the little things.</span></h2><p>A shared laugh. A curious question. Someone who remembers the small detail you thought nobody noticed. Connection often begins there.</p><figure class="section-photo"><img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=72" alt="Friends sharing an easy, joyful moment" loading="lazy" decoding="async" width="900" height="650"><figcaption>Little moments, lasting meaning</figcaption></figure></div>
     <div class="features">
       <article class="feature"><div class="feature-icon">💗</div><h3>Be seen, not scanned</h3><p>Start with the parts of you that matter: your interests, your values, and what makes a conversation feel easy.</p></article>
       <article class="feature"><div class="feature-icon">🧩</div><h3>Chemistry takes time</h3><p>Shared interests can open the door. Honest conversation and mutual effort are what help a connection grow.</p></article>
@@ -365,7 +404,7 @@ h1{font-size:clamp(3.5rem,7.7vw,8rem);line-height:.9;letter-spacing:-.085em;font
 </section>
 <section class="section" id="how">
   <div class="wrap">
-    <div class="section-head"><span class="kicker">LET IT UNFOLD</span><h2>No perfect lines. Just a real start.</h2><p>You don’t need to perform or pretend. Show up with curiosity, honesty, and respect.</p></div>
+    <div class="section-head"><span class="kicker">LET IT UNFOLD</span><h2>No perfect lines. Just a real start.</h2><p>You don’t need to perform or pretend. Show up with curiosity, honesty, and respect.</p><figure class="section-photo"><img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=900&q=72" alt="People enjoying an unhurried conversation outdoors" loading="lazy" decoding="async" width="900" height="650"><figcaption>Start with a simple hello</figcaption></figure></div>
     <div class="how">
       <article class="step"><h3>Start with you</h3><p>Share a few basics and the kind of connection you hope to build.</p></article>
       <article class="step"><h3>Make room for a hello</h3><p>The service team can explain any next steps and applicable fees before you commit.</p></article>
@@ -377,13 +416,13 @@ h1{font-size:clamp(3.5rem,7.7vw,8rem);line-height:.9;letter-spacing:-.085em;font
   <div class="wrap">
     <div class="price-panel">
       <div><span class="kicker">One-time registration</span><h2>Meet the possibility.</h2><p class="muted">No pressure to be perfect. Just the possibility of meeting someone who gets you.</p><div class="price">₹99 <small>one time</small></div><div class="price-list"><span class="pill">✓ Short registration</span><span class="pill">✓ Adults 18+ only</span><span class="pill">✓ Privacy-first intent</span></div></div>
-      <figure class="price-photo"><img src="https://images.unsplash.com/photo-1511988617509-a57c8a288659?auto=format&fit=crop&w=700&q=70" alt="Friends enjoying a relaxed moment together" loading="lazy" decoding="async" width="700" height="600"></figure><button class="btn primary" data-open-form>Start registration ↗</button>
+      <figure class="price-photo"><img src="https://images.unsplash.com/photo-1511988617509-a57c8a288659?auto=format&fit=crop&w=700&q=70" alt="Friends enjoying a relaxed moment together" loading="lazy" decoding="async" width="700" height="600"></figure><figure class="price-photo"><img src="https://images.unsplash.com/photo-1511988617509-a57c8a288659?auto=format&fit=crop&w=700&q=70" alt="Friends enjoying a relaxed moment together" loading="lazy" decoding="async" width="700" height="600"></figure><button class="btn primary" data-open-form>Start registration ↗</button>
     </div>
     <p class="fine" style="text-align:center;margin-top:13px">Registration submissions are saved to the database. The ₹99 payment step is not connected yet, so no payment is taken on this page.</p>
   </div>
 </section>
 <section class="section" id="faq">
-  <div class="wrap"><div class="section-head"><span class="kicker">Good to know</span><h2>A few clear answers.</h2></div>
+  <div class="wrap"><div class="section-head"><span class="kicker">Good to know</span><h2>A few clear answers.</h2><p>Clear expectations make space for better conversations.</p><figure class="section-photo"><img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=900&q=72" alt="People talking together in a calm, welcoming space" loading="lazy" decoding="async" width="900" height="650"><figcaption>Clarity builds comfort</figcaption></figure></div>
     <div class="faq">
       <details><summary>Is the ₹99 fee one-time?</summary><p>This concept uses a one-time ₹99 registration fee. The final service terms should explain exactly what it covers before payments are enabled.</p></details>
       <details><summary>Does registration guarantee a match?</summary><p>No. Registration or payment cannot guarantee compatibility, a response, or a successful match.</p></details>
@@ -463,56 +502,34 @@ form.addEventListener('submit',async e=>{
 
 <script>
 (() => {
-  const canvas = document.getElementById("gateway-flow-bg");
-  if (!canvas) return;
-  const ctx = canvas.getContext("2d");
-  if (!ctx) return;
-  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  let width = 0, height = 0, dpr = 1, raf = 0;
-  let paths = [];
-  const count = () => window.innerWidth < 640 ? 24 : 48;
-  function resize() {
-    dpr = Math.min(window.devicePixelRatio || 1, 1.5);
-    width = window.innerWidth; height = window.innerHeight;
-    canvas.width = Math.floor(width * dpr); canvas.height = Math.floor(height * dpr);
-    canvas.style.width = width + "px"; canvas.style.height = height + "px";
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    paths = Array.from({length: count()}, (_, i) => ({
-      left: i % 2 === 0,
-      startY: (i / count()) * height * 1.3 - height * .15,
-      t: Math.random(),
-      speed: .00045 + Math.random() * .0007
-    }));
-    draw(true);
-  }
-  function point(t,p0,p1,p2,p3) {
-    const u=1-t;
-    return {x:u*u*u*p0.x+3*u*u*t*p1.x+3*u*t*t*p2.x+t*t*t*p3.x,
-            y:u*u*u*p0.y+3*u*u*t*p1.y+3*u*t*t*p2.y+t*t*t*p3.y};
-  }
-  function draw(staticFrame=false) {
-    ctx.clearRect(0,0,width,height);
-    const cx=width/2, cy=height/2;
-    paths.forEach(p => {
-      const p0={x:p.left?0:width,y:p.startY};
-      const p1={x:p.left?cx*.38:width-cx*.38,y:p.startY};
-      const p2={x:p.left?cx*.82:width-cx*.82,y:cy};
-      const p3={x:cx,y:cy};
-      ctx.beginPath(); ctx.moveTo(p0.x,p0.y); ctx.bezierCurveTo(p1.x,p1.y,p2.x,p2.y,p3.x,p3.y);
-      ctx.setLineDash([1,7]); ctx.strokeStyle="rgba(215,222,239,.15)"; ctx.lineWidth=1; ctx.stroke(); ctx.setLineDash([]);
-      const pos=point(p.t,p0,p1,p2,p3);
-      const glow=ctx.createRadialGradient(pos.x,pos.y,0,pos.x,pos.y,7);
-      glow.addColorStop(0,"rgba(247,218,235,.65)"); glow.addColorStop(1,"rgba(207,216,237,0)");
-      ctx.fillStyle=glow; ctx.fillRect(pos.x-7,pos.y-7,14,14);
-      ctx.fillStyle="rgba(238,231,244,.78)"; ctx.fillRect(pos.x-1,pos.y-1,2,2);
-      if (!staticFrame) { p.t += p.speed; if(p.t>1){p.t=0;p.startY+=(Math.random()-.5)*12;} }
-    });
-    if (!reduced && !staticFrame) raf=requestAnimationFrame(()=>draw(false));
-  }
-  window.addEventListener("resize",resize,{passive:true});
-  document.addEventListener("visibilitychange",()=>{if(document.hidden) cancelAnimationFrame(raf); else if(!reduced) draw(false);});
-  resize();
-  if (!reduced) draw(false);
+ const canvas=document.getElementById("gateway-flow-bg");if(!canvas)return;
+ const ctx=canvas.getContext("2d",{alpha:true});if(!ctx)return;
+ const reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+ const saveData=!!(navigator.connection&&navigator.connection.saveData);
+ const lowPower=reduced||saveData||window.innerWidth<520;
+ let width=0,height=0,dpr=1,raf=0,lastFrame=0,visible=!document.hidden,paths=[];
+ const count=()=>window.innerWidth<640?10:(lowPower?14:26);
+ function point(t,a,b,c,d){const u=1-t;return{x:u*u*u*a.x+3*u*u*t*b.x+3*u*t*t*c.x+t*t*t*d.x,y:u*u*u*a.y+3*u*u*t*b.y+3*u*t*t*c.y+t*t*t*d.y};}
+ function resize(){
+  dpr=Math.min(window.devicePixelRatio||1,lowPower?1:1.25);width=window.innerWidth;height=window.innerHeight;
+  canvas.width=Math.floor(width*dpr);canvas.height=Math.floor(height*dpr);canvas.style.width=width+"px";canvas.style.height=height+"px";ctx.setTransform(dpr,0,0,dpr,0,0);
+  paths=Array.from({length:count()},(_,i)=>({left:i%2===0,startY:(i/count())*height*1.3-height*.15,t:Math.random(),speed:.00022+Math.random()*.00035}));
+  draw(true);if(!lowPower&&visible)start();
+ }
+ function draw(staticFrame=false){
+  ctx.clearRect(0,0,width,height);const cx=width/2,cy=height/2;
+  paths.forEach(p=>{
+   const a={x:p.left?0:width,y:p.startY},b={x:p.left?cx*.38:width-cx*.38,y:p.startY},c={x:p.left?cx*.82:width-cx*.82,y:cy},d={x:cx,y:cy};
+   ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.bezierCurveTo(b.x,b.y,c.x,c.y,d.x,d.y);ctx.setLineDash([1,7]);ctx.strokeStyle="rgba(215,222,239,.11)";ctx.lineWidth=1;ctx.stroke();ctx.setLineDash([]);
+   if(!staticFrame){const pos=point(p.t,a,b,c,d);ctx.fillStyle="rgba(238,231,244,.58)";ctx.fillRect(pos.x-.8,pos.y-.8,1.6,1.6);p.t+=p.speed*2;if(p.t>1){p.t=0;p.startY+=(Math.random()-.5)*10;}}
+  });
+ }
+ function tick(time){raf=0;if(!visible||lowPower)return;if(time-lastFrame<33){raf=requestAnimationFrame(tick);return;}lastFrame=time;draw(false);raf=requestAnimationFrame(tick);}
+ function start(){if(!raf&&visible&&!lowPower)raf=requestAnimationFrame(tick);}
+ function stop(){if(raf)cancelAnimationFrame(raf);raf=0;}
+ document.addEventListener("visibilitychange",()=>{visible=!document.hidden;if(visible)start();else stop();});
+ window.addEventListener("resize",()=>{stop();resize();},{passive:true});
+ resize();if(lowPower)canvas.style.opacity=".12";
 })();
 </script>
 
