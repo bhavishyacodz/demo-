@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#130d22">
+<meta name="description" content="Meet new people, make genuine connections, and explore a more thoughtful way to date. Adults 18+ only.">
+<title>Meet Cute — Make room for a real connection</title>
+<style>
+:root{--bg:#100b1b;--panel:#1b1429;--panel2:#241a35;--text:#fff8ff;--muted:#c6b9d1;--pink:#ff7cba;--violet:#b8a0ff;--line:rgba(255,255,255,.12);--mint:#c9ffd9}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55}a{color:inherit}button,input,select,textarea{font:inherit}.wrap{width:min(1120px,calc(100% - 36px));margin:auto}.nav{display:flex;align-items:center;justify-content:space-between;padding:22px 0}.brand{display:flex;gap:10px;align-items:center;font-weight:850;letter-spacing:-.04em;font-size:1.2rem}.brand-mark{display:grid;place-items:center;width:38px;height:38px;border-radius:14px;background:linear-gradient(135deg,var(--pink),var(--violet));color:#21112b;box-shadow:0 8px 30px #ff7cba2b}.nav-note{color:var(--muted);font-size:.9rem}.hero{position:relative;overflow:hidden;padding:58px 0 76px}.hero:before,.hero:after{content:"";position:absolute;z-index:-1;border-radius:50%;filter:blur(2px);pointer-events:none}.hero:before{width:440px;height:440px;right:-110px;top:-120px;background:radial-gradient(circle,#a75bff3b,transparent 68%)}.hero:after{width:380px;height:380px;left:-170px;bottom:-170px;background:radial-gradient(circle,#ff65a72b,transparent 70%)}.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:48px}.eyebrow{display:inline-flex;align-items:center;gap:8px;border:1px solid #ffffff20;background:#ffffff08;color:#ffe1f1;border-radius:999px;padding:7px 12px;font-size:.83rem;font-weight:700}.dot{width:7px;height:7px;border-radius:50%;background:var(--mint);box-shadow:0 0 12px var(--mint)}h1{font-size:clamp(2.8rem,6.3vw,5.3rem);line-height:.99;letter-spacing:-.075em;margin:22px 0}.gradient{background:linear-gradient(95deg,#fff 8%,#ff9acb 50%,#b9a5ff 90%);-webkit-background-clip:text;background-clip:text;color:transparent}.lead{font-size:1.12rem;color:var(--muted);max-width:540px}.actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:28px 0 14px}.btn{display:inline-flex;justify-content:center;align-items:center;gap:9px;border:0;border-radius:14px;padding:14px 19px;font-weight:800;cursor:pointer;text-decoration:none;transition:transform .18s,box-shadow .18s}.btn:hover{transform:translateY(-2px)}.primary{background:linear-gradient(105deg,var(--pink),#c6a6ff);color:#24102d;box-shadow:0 12px 32px #ff7cba25}.secondary{border:1px solid var(--line);background:#ffffff08;color:var(--text)}.fine{color:#a99bb9;font-size:.82rem}.visual{position:relative;min-height:430px;display:grid;place-items:center}.orb{position:absolute;width:330px;height:330px;border-radius:50%;background:radial-gradient(circle at 32% 28%,#ffb3d6,#9e71e8 48%,#33234d 76%);opacity:.92;filter:drop-shadow(0 25px 70px #a56bff38)}.orbit{position:absolute;width:390px;height:390px;border:1px solid #ffffff1e;border-radius:50%;transform:rotate(-25deg) scaleY(.64)}.orbit.two{width:430px;height:430px;transform:rotate(35deg) scaleY(.7)}.float-card{position:absolute;z-index:2;background:#211830eF;border:1px solid #ffffff20;box-shadow:0 22px 60px #0005;backdrop-filter:blur(16px);border-radius:20px;padding:15px 17px}.float-card strong{display:block;font-size:.96rem}.float-card small{color:var(--muted)}.card-a{top:50px;left:0;transform:rotate(-5deg)}.card-b{bottom:45px;right:-2px;transform:rotate(4deg)}.heart{font-size:6.5rem;filter:drop-shadow(0 12px 22px #4b174b55);position:relative;z-index:1}.spark{position:absolute;color:#ffe4f4;font-size:1.7rem}.s1{top:55px;right:55px}.s2{bottom:82px;left:42px}.section{padding:66px 0}.section-head{text-align:center;max-width:650px;margin:0 auto 34px}.kicker{color:var(--pink);text-transform:uppercase;font-size:.78rem;font-weight:850;letter-spacing:.15em}.section h2{font-size:clamp(2rem,4vw,3.1rem);letter-spacing:-.055em;line-height:1.08;margin:10px 0}.section-head p,.muted{color:var(--muted)}.features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.feature{padding:24px;border:1px solid var(--line);background:linear-gradient(145deg,#ffffff0a,#ffffff03);border-radius:22px}.feature-icon{display:grid;place-items:center;width:48px;height:48px;border-radius:16px;background:#ff7cba17;font-size:1.4rem;margin-bottom:16px}.feature h3{margin:0 0 8px;font-size:1.08rem}.feature p{margin:0;color:var(--muted);font-size:.94rem}.how{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:step}.step{border-left:1px solid #ffffff20;padding:4px 20px 4px 22px}.step:before{counter-increment:step;content:"0" counter(step);color:var(--pink);font-weight:900;letter-spacing:.1em}.step h3{margin:10px 0 5px}.step p{margin:0;color:var(--muted);font-size:.94rem}.price-panel{display:grid;grid-template-columns:1fr auto;align-items:center;gap:28px;border:1px solid #ff9dcc55;border-radius:28px;padding:clamp(24px,5vw,48px);background:radial-gradient(ellipse at 100% 0,#a36aff24,transparent 55%),linear-gradient(130deg,#28192f,#1b1429);box-shadow:0 25px 80px #0002}.price{font-size:3.3rem;line-height:1;font-weight:900;letter-spacing:-.06em}.price small{font-size:.95rem;color:var(--muted);font-weight:600;letter-spacing:0}.price-list{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.pill{border:1px solid #ffffff1c;background:#ffffff08;border-radius:999px;padding:7px 11px;font-size:.83rem;color:#eee0f5}.faq{max-width:800px;margin:auto;display:grid;gap:10px}.faq details{border:1px solid var(--line);background:#ffffff05;border-radius:16px;padding:17px 19px}.faq summary{cursor:pointer;font-weight:750}.faq details p{color:var(--muted);margin-bottom:0}.footer{border-top:1px solid var(--line);padding:28px 0 40px;color:#a99bb9;font-size:.84rem}.footer-row{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}.modal{position:fixed;inset:0;z-index:10;display:none;align-items:center;justify-content:center;padding:18px;background:#090610cc;backdrop-filter:blur(8px)}.modal.open{display:flex}.dialog{width:min(560px,100%);max-height:92vh;overflow:auto;background:#1b1429;border:1px solid #ffffff20;border-radius:24px;padding:25px;box-shadow:0 30px 100px #0008}.dialog-head{display:flex;justify-content:space-between;gap:15px;align-items:start}.dialog h2{margin:0;font-size:1.7rem;letter-spacing:-.04em}.close{background:#ffffff10;border:1px solid var(--line);color:white;border-radius:10px;padding:7px 11px;cursor:pointer}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin:18px 0}.field{display:grid;gap:6px}.field.full{grid-column:1/-1}.field label{font-size:.88rem;font-weight:700}.field input,.field select,.field textarea{width:100%;border-radius:12px;border:1px solid #ffffff24;background:#100b1b;color:var(--text);padding:12px;outline:none}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--pink)}.check{display:flex;align-items:flex-start;gap:9px;color:var(--muted);font-size:.86rem;margin:12px 0}.check input{margin-top:5px;accent-color:var(--pink)}.notice{border:1px solid #ffd98c44;background:#ffd98c0b;color:#f7dfae;padding:11px 13px;border-radius:12px;font-size:.82rem;margin:14px 0}.status{display:none;border:1px solid #a4f5bf55;background:#a4f5bf0d;color:#d7ffe3;padding:12px;border-radius:12px;margin-top:14px}.status.show{display:block}.disabled-note{opacity:.55;cursor:not-allowed}@media(max-width:780px){.hero{padding:35px 0 45px}.hero-grid{grid-template-columns:1fr;gap:8px}.hero-copy{text-align:center}.lead{margin:auto}.actions{justify-content:center}.visual{min-height:340px}.orb{width:260px;height:260px}.orbit{width:315px;height:315px}.orbit.two{width:350px;height:350px}.card-a{left:2%}.card-b{right:1%}.features,.how{grid-template-columns:1fr}.step{padding-bottom:20px}.price-panel{grid-template-columns:1fr;text-align:center}.price-list{justify-content:center}.price-panel .btn{width:100%}.nav-note{display:none}}@media(max-width:480px){.wrap{width:min(100% - 26px,1120px)}h1{font-size:3.2rem}.visual{min-height:300px}.float-card{padding:11px 12px}.card-a{top:35px}.card-b{bottom:28px}.heart{font-size:5rem}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.section{padding:48px 0}}
+</style>
+</head>
+<body>
+<header class="wrap nav">
+  <a class="brand" href="#" aria-label="Meet Cute home"><span class="brand-mark">♡</span><span>meet<span class="gradient">cute</span></span></a>
+  <span class="nav-note">A little closer to a real connection</span>
+  <a class="btn secondary" href="#how">How it works</a>
+</header>
+<main>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow"><span class="dot"></span> For adults 18+ · New connections start here</span>
+      <h1>Less swiping.<br><span class="gradient">More feeling.</span></h1>
+      <p class="lead">Meet people who are also open to a genuine connection. Start with a simple registration and take the next step at your own pace.</p>
+      <div class="actions"><button class="btn primary" data-open-form>Get started · ₹99 <span aria-hidden="true">↗</span></button><a class="btn secondary" href="#how">See how it works</a></div>
+      <p class="fine">One-time registration fee · Adults 18+ only · No match is guaranteed</p>
+    </div>
+    <div class="visual" aria-label="Abstract heart illustration">
+      <div class="orb"></div><div class="orbit"></div><div class="orbit two"></div>
+      <div class="heart">♡</div><span class="spark s1">✦</span><span class="spark s2">✧</span>
+      <div class="float-card card-a"><strong>✨ Real intentions</strong><small>Start with what matters to you</small></div>
+      <div class="float-card card-b"><strong>💌 One simple start</strong><small>Tell us a little about yourself</small></div>
+    </div>
+  </div>
+</section>
+<section class="section" id="benefits">
+  <div class="wrap">
+    <div class="section-head"><span class="kicker">A better first step</span><h2>Make space for <span class="gradient">something real.</span></h2><p>A simple, thoughtful way to tell us what you're looking for—without making the process feel like a chore.</p></div>
+    <div class="features">
+      <article class="feature"><div class="feature-icon">💗</div><h3>Share what matters</h3><p>Tell us a little about your interests and the kind of connection you're hoping to find.</p></article>
+      <article class="feature"><div class="feature-icon">🧩</div><h3>A thoughtful process</h3><p>Your preferences can help the team understand what kind of introduction may suit you.</p></article>
+      <article class="feature"><div class="feature-icon">🔒</div><h3>Respect and privacy</h3><p>Your information should be handled carefully and shared with others only with your consent.</p></article>
+    </div>
+  </div>
+</section>
+<section class="section" id="how">
+  <div class="wrap">
+    <div class="section-head"><span class="kicker">Simple by design</span><h2>Three steps to get started.</h2><p>Clear expectations at every step, with no promises of a guaranteed match.</p></div>
+    <div class="how">
+      <article class="step"><h3>Register</h3><p>Complete a short form and confirm you're 18 or older.</p></article>
+      <article class="step"><h3>Pay once</h3><p>Pay the ₹99 one-time registration fee through the official payment flow once it is connected.</p></article>
+      <article class="step"><h3>Next steps</h3><p>The team reviews your submission and explains what happens next under the service's published terms.</p></article>
+    </div>
+  </div>
+</section>
+<section class="section" id="join">
+  <div class="wrap">
+    <div class="price-panel">
+      <div><span class="kicker">One-time registration</span><h2>Take the first step.</h2><p class="muted">One registration fee. Clear next steps. Genuine respect for your choices.</p><div class="price">₹99 <small>one time</small></div><div class="price-list"><span class="pill">✓ Short registration</span><span class="pill">✓ Adults 18+ only</span><span class="pill">✓ Privacy-first intent</span></div></div>
+      <button class="btn primary" data-open-form>Start registration ↗</button>
+    </div>
+    <p class="fine" style="text-align:center;margin-top:13px">Demo concept: payment and live submission are not connected yet. The final fee terms and service details must be confirmed before launch.</p>
+  </div>
+</section>
+<section class="section" id="faq">
+  <div class="wrap"><div class="section-head"><span class="kicker">Good to know</span><h2>A few clear answers.</h2></div>
+    <div class="faq">
+      <details><summary>Is the ₹99 fee one-time?</summary><p>This concept uses a one-time ₹99 registration fee. The final service terms should explain exactly what it covers before payments are enabled.</p></details>
+      <details><summary>Does registration guarantee a match?</summary><p>No. Registration or payment cannot guarantee compatibility, a response, or a successful match.</p></details>
+      <details><summary>Who can register?</summary><p>This service is intended for adults aged 18 and above only. Do not submit anyone else's details without their permission.</p></details>
+      <details><summary>How will my details be used?</summary><p>The final privacy notice must explain what information is collected, why it is needed, who can access it, how long it is kept, and how to request deletion.</p></details>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="footer"><div class="wrap footer-row"><span>♡ meetcute · Landing page concept</span><span>Adults 18+ · Respect · Consent · Privacy</span><span>Terms and privacy policy must be added before launch.</span></div></footer>
+<div class="modal" id="registration-modal" role="dialog" aria-modal="true" aria-labelledby="form-title">
+  <div class="dialog">
+    <div class="dialog-head"><div><span class="kicker">First step</span><h2 id="form-title">A little about you.</h2><p class="muted" style="margin:6px 0 0">This is a preview form. Payment and submission storage are not live yet.</p></div><button class="close" id="close-modal" aria-label="Close form">✕</button></div>
+    <div class="notice">Please continue only if you're 18 or older. Do not enter highly sensitive information or upload private photos in this demo.</div>
+    <form id="registration-form">
+      <div class="form-grid">
+        <div class="field"><label for="name">First name</label><input id="name" name="name" autocomplete="given-name" required maxlength="60" placeholder="Your first name"></div>
+        <div class="field"><label for="age">Age</label><input id="age" name="age" type="number" min="18" max="120" required placeholder="18+"></div>
+        <div class="field full"><label for="email">Email (optional)</label><input id="email" name="email" type="email" autocomplete="email" maxlength="120" placeholder="you@example.com"></div>
+        <div class="field full"><label for="intent">What are you hoping to find?</label><select id="intent" name="intent" required><option value="">Choose an option</option><option>Meet new people</option><option>Dating and a relationship</option><option>Explore and see where it goes</option></select></div>
+      </div>
+      <label class="check"><input type="checkbox" id="adult-consent" required><span>I confirm I am 18 or older and these are my own details.</span></label>
+      <label class="check"><input type="checkbox" id="privacy-consent" required><span>I understand this is a demo form and agree to review the final privacy notice before any real registration.</span></label>
+      <button class="btn primary" style="width:100%" type="submit">Preview my registration</button>
+      <div class="status" id="form-status" role="status"></div>
+      <p class="fine">No payment will be taken and this demo does not send or save your form details.</p>
+    </form>
+  </div>
+</div>
+<script>
+const modal=document.getElementById('registration-modal');
+const openers=document.querySelectorAll('[data-open-form]');
+const closeBtn=document.getElementById('close-modal');
+const form=document.getElementById('registration-form');
+const statusBox=document.getElementById('form-status');
+function openModal(){modal.classList.add('open');document.body.style.overflow='hidden';setTimeout(()=>document.getElementById('name').focus(),60)}
+function closeModal(){modal.classList.remove('open');document.body.style.overflow=''}
+openers.forEach(btn=>btn.addEventListener('click',openModal));
+closeBtn.addEventListener('click',closeModal);
+modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+form.addEventListener('submit',e=>{
+ e.preventDefault();
+ const age=Number(document.getElementById('age').value);
+ if(age<18){statusBox.textContent='This service is for adults aged 18 and above only.';statusBox.classList.add('show');return}
+ statusBox.textContent='Preview complete. No payment was taken and no details were sent or saved. Connect a secure backend and payment provider before accepting real registrations.';
+ statusBox.classList.add('show');
+});
+</script>
+</body>
+</html>
