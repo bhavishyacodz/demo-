@@ -57,3 +57,8 @@ grant update (payment_status, payment_reference, match_status, work_status, admi
 
 -- After creating the admin user in Supabase Auth, allowlist its auth.users UUID:
 -- insert into public.admin_users(user_id) values ('REPLACE-WITH-ADMIN-AUTH-UUID');
+
+-- Keep the public registration RPC available only to unauthenticated visitors;
+-- it validates DOB/18+, consent, interests, and required contact details before inserting.
+revoke execute on function public.submit_registration(jsonb) from public, authenticated;
+grant execute on function public.submit_registration(jsonb) to anon;
