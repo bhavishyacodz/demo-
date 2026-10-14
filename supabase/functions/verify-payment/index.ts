@@ -14,6 +14,13 @@ Deno.serve(async(req:Request)=>{
  const key=await crypto.subtle.importKey("raw",new TextEncoder().encode(secret),{name:"HMAC",hash:"SHA-256"},false,["sign"]);
  const sig=hex(await crypto.subtle.sign("HMAC",key,new TextEncoder().encode(b.razorpay_order_id+"|"+b.razorpay_payment_id)));
  if(sig.length!==b.razorpay_signature.length||![...sig].every((c,i)=>c===b.razorpay_signature![i]))return reply({error:"Payment signature is invalid"},400);
+ const keyId=Deno.env.get("RAZORPAY_KEY_ID");
+ if(!keyId)return reply({error:"Payment provider is not configured"},503);
+ const paymentRes=await fetch("https://api.razorpay.com/v1/payments/"+encodeURIComponent(b.razorpay_payment_id),{headers:{Authorization:"Basic "+btoa(keyId+":"+secret)}});
+ if(!paymentRes.ok)return reply({error:"Could not verify payment status with the payment provider"},502);
+ const payment=await paymentRes.json();
+ if(payment.order_id!==b.razorpay_order_id||payment.amount!==9900||payment.currency!=="INR")return reply({error:"Payment does not match the expected order amount"},400);
+ if(payment.status!=="captured")return reply({error:"Payment is not captured yet; status remains pending",payment_status:payment.status},202);
  const db=createClient(url,serviceKey,{auth:{persistSession:false}});
  const {data:row,error}=await db.from("registrations").select("id,payment_status,payment_reference").eq("id",b.registration_id).maybeSingle();
  if(error||!row)return reply({error:"Registration not found"},404);
