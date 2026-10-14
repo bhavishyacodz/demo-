@@ -48,9 +48,9 @@ create policy "Admins can update registrations" on public.registrations
 
 -- Limit public inserts to registration fields only. Browser code cannot mark a record paid.
 revoke insert, select, update, delete on public.registrations from anon, authenticated;
-grant insert (id, full_name, age, age_18_confirmed, city_area, interests, match_preferences,
+revoke insert (id, full_name, age, age_18_confirmed, city_area, interests, match_preferences,
               availability, consent_status, contact_method, contact_details, privacy_consent_at)
-  on public.registrations to anon;
+  on public.registrations from anon;
 grant select on public.registrations to authenticated;
 grant update (payment_status, payment_reference, match_status, work_status, admin_notes)
   on public.registrations to authenticated;
