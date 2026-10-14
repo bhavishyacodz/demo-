@@ -15,7 +15,7 @@
 html{background:#07080b}
 body{background:linear-gradient(180deg,#07080b 0%,#090a10 55%,#08090d 100%);color:var(--text)}
 body:after{content:"";position:fixed;inset:0;z-index:2;pointer-events:none;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 2 2' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='1' height='1' fill='%23fff'/%3E%3Crect x='1' y='1' width='1' height='1' fill='%23fff'/%3E%3C/svg%3E");background-size:3px 3px}
-#gateway-flow-bg{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.6}
+#gateway-flow-bg{display:none!important}
 header.nav,main,.footer{position:relative;z-index:1}
 .nav{padding-top:20px;padding-bottom:20px}
 .brand-mark{background:linear-gradient(135deg,#f3b2d2,#d7dbe7);color:#15151c;box-shadow:0 0 28px #e9b2d525;border-radius:12px}
@@ -82,7 +82,7 @@ h1{font-size:clamp(3.5rem,8.4vw,8.8rem);line-height:.86;letter-spacing:-.095em;f
 .orbit.two{width:min(38vw,470px);height:min(20vw,245px);transform:rotate(52deg);border-color:rgba(38,60,255,.15)}
 .heart{font-size:clamp(4rem,9vw,8rem);color:rgba(255,255,255,.85);text-shadow:0 3px 30px rgba(38,60,255,.2);z-index:1;mix-blend-mode:soft-light}
 .spark{color:#263cff}.float-card{background:rgba(255,255,255,.78);border:1px solid white;box-shadow:0 12px 45px rgba(10,15,45,.08);backdrop-filter:blur(18px);color:#090a12;border-radius:16px;padding:15px 18px}.float-card small{color:#666b7c}.card-a{top:18%;left:0}.card-b{bottom:15%;right:0}
-#gateway-flow-bg{opacity:.14;mix-blend-mode:multiply}
+#gateway-flow-bg{display:none!important}
 .section{padding:clamp(75px,11vw,155px) 0;background:#eff0f8}
 .section:nth-of-type(even){background:#090a12;color:#f5f6ff}.section:nth-of-type(even) .section-head p,.section:nth-of-type(even) .muted,.section:nth-of-type(even) .feature p,.section:nth-of-type(even) .step p{color:#aeb2c4}
 .section-head{max-width:760px;margin-bottom:54px}.section-head h2,.price-panel h2{font-size:clamp(2.7rem,6vw,6rem);line-height:.95;letter-spacing:-.075em;font-weight:500;margin:20px 0}
@@ -201,7 +201,7 @@ html{scroll-padding-top:86px;background:var(--bond-night)}
 body{background:var(--bond-night);color:var(--bond-ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 14% 10%,#7b315f38,transparent 36%),radial-gradient(ellipse at 88% 34%,#5740a12c,transparent 34%),radial-gradient(ellipse at 48% 100%,#6e30422b,transparent 46%)}
 #theme002-note{background:#100a18;color:#e6c9d8;border-color:#f5c1d21e;letter-spacing:.18em}
-#gateway-flow-bg{opacity:.3;mix-blend-mode:screen}
+#gateway-flow-bg{display:none!important}
 .nav{background:rgba(16,10,24,.76);border-bottom:1px solid #fff1;backdrop-filter:blur(24px);padding:16px 0}
 .brand{color:#fff5f5}.brand-mark{background:linear-gradient(135deg,#ffb5c8,#f3d9a4);color:#38182a;box-shadow:0 0 32px #ffb5c82b}
 .brand .gradient{background:linear-gradient(110deg,#ffb5c8,#f3d9a4)!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;-webkit-text-fill-color:transparent!important}
@@ -589,13 +589,7 @@ form.addEventListener('submit',async e=>{
   const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('in-view');observer.unobserve(entry.target)}}),{threshold:.12,rootMargin:'0px 0px -35px 0px'});
   revealTargets.forEach(el=>observer.observe(el));
  } else revealTargets.forEach(el=>el.classList.add('in-view'));
- // Add a kinetic typographic ribbon between hero and content.
- const hero=document.querySelector('.hero');
- if(hero){
-  const ribbon=document.createElement('div');ribbon.className='studio-marquee';ribbon.setAttribute('aria-label','Slow moments, real chemistry, the little things');
-  ribbon.innerHTML='<div class="studio-marquee-track" aria-hidden="true">'+Array.from({length:4},()=>'<span>SLOW MOMENTS <b>✳</b> REAL CHEMISTRY <b>✳</b> THE LITTLE THINGS <b>✳</b></span>').join('')+'</div>';
-  hero.insertAdjacentElement('afterend',ribbon);
- }
+  // Moving marquee removed: keep the page still and distraction-free.
  // Responsive pointer parallax for the sculptural object, with bounded movement.
  const visual=document.querySelector('.visual'),orb=document.querySelector('.orb');
  if(visual&&orb&&fine&&!reduce){
