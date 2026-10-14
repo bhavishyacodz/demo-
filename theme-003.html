@@ -98,6 +98,102 @@ h1{font-size:clamp(3.5rem,8.4vw,8.8rem);line-height:.86;letter-spacing:-.095em;f
 @media(max-width:760px){.wrap{width:calc(100% - 32px)}.nav-note{display:none}.hero{min-height:auto}.hero-grid{grid-template-columns:1fr;padding-top:7vh;padding-bottom:4vh}.hero-copy{padding-top:2vh}h1{font-size:clamp(3.4rem,17vw,6rem)}.visual{min-height:330px;margin-top:10px}.orb{width:min(70vw,330px)}.orbit{width:80vw;height:30vw}.orbit.two{width:72vw;height:39vw}.card-a{left:0;top:10%}.card-b{right:0;bottom:8%}.float-card{padding:11px 12px;max-width:180px}.section{padding:76px 0}.section-head{margin-bottom:32px}.features{grid-template-columns:1fr}.price-panel{align-items:flex-start}.footer-row{gap:12px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
 
+
+/* ── Immersive Studio 2.0: interaction, depth, and editorial motion ── */
+:root{--studio-blue:#263cff;--studio-lime:#c7ff00;--studio-ink:#090a12;--studio-paper:#eff0f8;--studio-ease:cubic-bezier(.22,1,.36,1)}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{cursor:auto}
+::selection{background:var(--studio-lime);color:var(--studio-ink)}
+#studio-progress{position:fixed;z-index:30;top:0;left:0;height:3px;width:0;background:var(--studio-lime);transform-origin:left;box-shadow:0 0 16px #c7ff0080}
+#studio-cursor{position:fixed;z-index:29;left:0;top:0;width:18px;height:18px;border:1px solid var(--studio-blue);border-radius:50%;pointer-events:none;opacity:0;transform:translate(-50%,-50%);transition:width .25s,height .25s,background .25s,opacity .2s;mix-blend-mode:difference}
+#studio-cursor.active{width:54px;height:54px;background:#c7ff00;border-color:#c7ff00}
+@media(hover:hover) and (pointer:fine){body.studio-ready #studio-cursor{opacity:1}body.studio-ready a,body.studio-ready button,body.studio-ready summary{cursor:none}}
+#studio-intro{position:fixed;z-index:40;inset:0;background:#090a12;color:#f5f6ff;display:grid;place-items:center;transition:opacity .7s var(--studio-ease),visibility .7s;pointer-events:none}
+#studio-intro.done{opacity:0;visibility:hidden}
+.intro-inner{width:min(420px,80vw)}
+.intro-top{display:flex;justify-content:space-between;gap:20px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#b5bad0}
+.intro-word{font-size:clamp(3rem,9vw,6rem);letter-spacing:-.1em;line-height:1;font-weight:500;margin:25px 0}
+.intro-track{height:2px;background:#ffffff24;overflow:hidden}.intro-track span{display:block;height:100%;width:0;background:#c7ff00;animation:introLoad 1.05s var(--studio-ease) forwards}
+@keyframes introLoad{to{width:100%}}
+.hero{min-height:min(850px,90vh);min-height:min(850px,90svh)}
+.hero-grid{position:relative}
+.hero-copy>*{animation:heroIn .9s var(--studio-ease) both}
+.hero-copy .eyebrow{animation-delay:.12s}.hero-copy h1{animation-delay:.22s}.hero-copy .lead{animation-delay:.32s}.hero-copy .actions{animation-delay:.42s}.hero-copy .fine{animation-delay:.5s}
+@keyframes heroIn{from{opacity:0;transform:translateY(28px);filter:blur(6px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+.hero-copy h1{max-width:900px}
+.hero-copy h1 .line-outline{-webkit-text-stroke:1.5px #263cff;color:transparent;-webkit-text-fill-color:transparent}
+.eyebrow{border-radius:3px;padding:9px 11px;gap:11px}
+.hero:after{content:"SCROLL TO EXPLORE  ↓";position:absolute;bottom:24px;left:4vw;color:#777d91;font-size:9px;letter-spacing:.18em}
+.visual{transform-style:preserve-3d;will-change:transform}
+.orb{position:relative;will-change:transform;transition:border-radius 1.2s var(--studio-ease);overflow:visible}
+.orb:before{animation:orbRing 14s linear infinite}
+.orb:after{animation:orbRing 19s linear infinite reverse}
+@keyframes orbRing{to{rotate:360deg}}
+.orbit{pointer-events:none;animation:orbitBreathe 8s ease-in-out infinite alternate}
+.orbit.two{animation-delay:-4s}
+@keyframes orbitBreathe{from{opacity:.35;translate:0 0}to{opacity:.95;translate:0 -8px}}
+.float-card{transition:transform .6s var(--studio-ease),box-shadow .4s,border-color .4s}
+.float-card:hover{box-shadow:0 20px 65px #263cff20;border-color:#263cff80}
+.card-a{animation:floatA 7s ease-in-out infinite}
+.card-b{animation:floatB 8s ease-in-out infinite}
+@keyframes floatA{0%,100%{translate:0 0}50%{translate:0 -9px}}
+@keyframes floatB{0%,100%{translate:0 0}50%{translate:0 11px}}
+/* moving typographic divider */
+.studio-marquee{overflow:hidden;background:var(--studio-lime);color:var(--studio-ink);padding:15px 0;transform:rotate(-1deg) scale(1.02);margin:0;position:relative;z-index:2}
+.studio-marquee-track{display:flex;width:max-content;animation:marqueeMove 28s linear infinite}
+.studio-marquee span{font-size:clamp(1rem,2vw,1.5rem);font-weight:700;letter-spacing:-.045em;padding:0 24px;white-space:nowrap}
+.studio-marquee b{font-weight:400;opacity:.5}
+@keyframes marqueeMove{to{transform:translateX(-50%)}}
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .8s var(--studio-ease),transform .8s var(--studio-ease)}
+.reveal.in-view{opacity:1;transform:translateY(0)}
+.feature{position:relative;overflow:hidden;isolation:isolate}
+.feature:before{content:"";position:absolute;z-index:-1;inset:0;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(38,60,255,.13),transparent 48%);opacity:0;transition:opacity .4s}
+.feature:hover:before{opacity:1}
+.feature:after{content:"↗";position:absolute;right:24px;top:24px;color:#263cff;opacity:0;transform:translate(-4px,4px);transition:.35s}
+.feature:hover:after{opacity:1;transform:translate(0,0)}
+.section-head{position:relative}
+.section-head .kicker{display:inline-flex;align-items:center;gap:10px}
+.section-head .kicker:before{content:"";display:inline-block;width:24px;height:1px;background:currentColor}
+.section-head h2{max-width:900px;margin-left:auto;margin-right:auto}
+.section-head p{margin-left:auto;margin-right:auto}
+.step{position:relative;transition:transform .4s var(--studio-ease)}
+.step:hover{transform:translateY(-5px)}
+.step:after{content:"";position:absolute;top:-1px;left:0;width:0;height:2px;background:var(--studio-blue);transition:width .5s var(--studio-ease)}
+.step:hover:after{width:100%}
+.price-panel{position:relative;overflow:hidden}
+.price-panel:after{content:"MC";position:absolute;right:3%;bottom:-.55em;font-size:clamp(10rem,25vw,25rem);font-weight:800;letter-spacing:-.13em;color:rgba(38,60,255,.035);pointer-events:none;line-height:1}
+.price-panel>*{position:relative;z-index:1}
+.price-panel .btn{white-space:nowrap}
+.faq details{transition:background .3s,border-color .3s}
+.faq details[open]{background:rgba(38,60,255,.035);padding-left:16px;padding-right:16px;border-color:#263cff50}
+.nav{position:sticky;top:0;background:rgba(239,240,248,.82);backdrop-filter:blur(18px);border-bottom:1px solid rgba(9,10,25,.06)}
+.brand{transition:letter-spacing .3s}.brand:hover{letter-spacing:-.02em}
+.nav .btn{font-size:10px;text-transform:uppercase;letter-spacing:.1em}
+.footer{position:relative;overflow:hidden}
+.footer:before{content:"MEET CUTE";display:block;font-size:clamp(3rem,14vw,13rem);font-weight:800;letter-spacing:-.11em;line-height:.9;color:rgba(255,255,255,.045);white-space:nowrap;margin:0 0 35px}
+#studio-status{position:fixed;right:18px;bottom:18px;z-index:25;padding:10px 13px;background:#090a12;color:#f5f6ff;border-radius:3px;font-size:10px;letter-spacing:.08em;opacity:0;transform:translateY(8px);transition:.3s;pointer-events:none}
+#studio-status.show{opacity:1;transform:translateY(0)}
+@media(max-width:760px){
+ #studio-cursor{display:none}
+ .hero:after{font-size:8px;bottom:14px}
+ .hero{padding-bottom:60px}
+ .hero-grid{gap:0}
+ .visual{transform:none!important}
+ .orb{animation-duration:12s}
+ .studio-marquee{padding:12px 0}
+ .studio-marquee span{padding:0 15px}
+ .price-panel .btn{white-space:normal}
+ .nav{padding:12px 0}
+}
+@media(prefers-reduced-motion:reduce){
+ #studio-intro{display:none!important}
+ .hero-copy>*{animation:none!important}
+ .orb,.orb:before,.orb:after,.orbit,.card-a,.card-b,.studio-marquee-track{animation:none!important}
+ .reveal{opacity:1;transform:none;transition:none}
+ .studio-marquee-track{width:100%;justify-content:center}
+ .studio-marquee-track span:nth-child(n+4){display:none}
+}
+
 </style>
 </head>
 <body>
@@ -286,6 +382,70 @@ form.addEventListener('submit',async e=>{
   document.addEventListener("visibilitychange",()=>{if(document.hidden) cancelAnimationFrame(raf); else if(!reduced) draw(false);});
   resize();
   if (!reduced) draw(false);
+})();
+</script>
+
+
+<script>
+/* Immersive Studio interaction layer — progressively enhanced, no external libraries. */
+(() => {
+ const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ const fine = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+ const body = document.body;
+ const progress = document.createElement('div'); progress.id='studio-progress'; progress.setAttribute('aria-hidden','true'); body.appendChild(progress);
+ const cursor = document.createElement('div'); cursor.id='studio-cursor'; cursor.setAttribute('aria-hidden','true'); body.appendChild(cursor);
+ const intro = document.createElement('div'); intro.id='studio-intro'; intro.setAttribute('aria-hidden','true');
+ intro.innerHTML='<div class="intro-inner"><div class="intro-top"><span>MEET CUTE / STUDIO 003</span><span>EXPERIENCE DESIGN</span></div><div class="intro-word">Feel<br>something.</div><div class="intro-track"><span></span></div></div>';
+ if(!reduce && !sessionStorage.getItem('mc-studio-intro')) { body.appendChild(intro); setTimeout(()=>{intro.classList.add('done');sessionStorage.setItem('mc-studio-intro','1');body.classList.add('studio-ready')},1250); }
+ else body.classList.add('studio-ready');
+ const status=document.createElement('div');status.id='studio-status';status.setAttribute('role','status');status.setAttribute('aria-live','polite');body.appendChild(status);
+ let statusTimer;
+ const say=(msg)=>{status.textContent=msg;status.classList.add('show');clearTimeout(statusTimer);statusTimer=setTimeout(()=>status.classList.remove('show'),2300)};
+ const updateProgress=()=>{const max=document.documentElement.scrollHeight-innerHeight;progress.style.width=(max>0?scrollY/max*100:0)+'%'};
+ addEventListener('scroll',updateProgress,{passive:true});updateProgress();
+ if(fine && !reduce){
+  addEventListener('pointermove',e=>{cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px'},{passive:true});
+  document.querySelectorAll('a,button,summary,.feature').forEach(el=>{
+   el.addEventListener('pointerenter',()=>cursor.classList.add('active'));
+   el.addEventListener('pointerleave',()=>cursor.classList.remove('active'));
+  });
+ }
+ // Reveal content only when it approaches the viewport.
+ const revealTargets=document.querySelectorAll('.section-head,.feature,.step,.price-panel,.faq details');
+ revealTargets.forEach(el=>el.classList.add('reveal'));
+ if('IntersectionObserver' in window && !reduce){
+  const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('in-view');observer.unobserve(entry.target)}}),{threshold:.12,rootMargin:'0px 0px -35px 0px'});
+  revealTargets.forEach(el=>observer.observe(el));
+ } else revealTargets.forEach(el=>el.classList.add('in-view'));
+ // Add a kinetic typographic ribbon between hero and content.
+ const hero=document.querySelector('.hero');
+ if(hero){
+  const ribbon=document.createElement('div');ribbon.className='studio-marquee';ribbon.setAttribute('aria-label','Thoughtful connections, real intentions, a better first step');
+  ribbon.innerHTML='<div class="studio-marquee-track" aria-hidden="true">'+Array.from({length:4},()=>'<span>REAL INTENTIONS <b>✳</b> BETTER CONNECTIONS <b>✳</b> A LITTLE MORE HUMAN <b>✳</b></span>').join('')+'</div>';
+  hero.insertAdjacentElement('afterend',ribbon);
+ }
+ // Responsive pointer parallax for the sculptural object, with bounded movement.
+ const visual=document.querySelector('.visual'),orb=document.querySelector('.orb');
+ if(visual&&orb&&fine&&!reduce){
+  visual.addEventListener('pointermove',e=>{
+   const r=visual.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+   orb.style.transform='translate3d('+(-x*22)+'px,'+(-y*20)+'px,20px) rotateX('+(-y*12)+'deg) rotateY('+(x*15)+'deg)';
+  });
+  visual.addEventListener('pointerleave',()=>{orb.style.transform=''});
+ }
+ // Subtle spotlight follows the pointer inside feature cards.
+ document.querySelectorAll('.feature').forEach(card=>card.addEventListener('pointermove',e=>{
+  const r=card.getBoundingClientRect();card.style.setProperty('--mx',(e.clientX-r.left)+'px');card.style.setProperty('--my',(e.clientY-r.top)+'px');
+ }));
+ // Magnetic pull, capped to avoid distracting movement.
+ if(fine&&!reduce)document.querySelectorAll('.hero .btn,.price-panel .btn').forEach(btn=>{
+  btn.addEventListener('pointermove',e=>{const r=btn.getBoundingClientRect();btn.style.transform='translate('+((e.clientX-r.left-r.width/2)*.07)+'px,'+((e.clientY-r.top-r.height/2)*.12)+'px)'});
+  btn.addEventListener('pointerleave',()=>{btn.style.transform=''});
+ });
+ // Explicitly signal that this concept does not collect payment.
+ document.querySelectorAll('[data-open-form]').forEach(btn=>btn.addEventListener('click',()=>say('Registration preview · payment is not connected')));
+ // Avoid stuck overlays if the browser restores this page from bfcache.
+ addEventListener('pageshow',()=>{if(intro.parentNode)intro.classList.add('done')});
 })();
 </script>
 
