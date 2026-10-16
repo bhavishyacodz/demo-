@@ -25,6 +25,7 @@
 .field textarea{min-height:82px;resize:vertical}
 @media(max-width:520px){.choice-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.form-section{margin-top:18px;padding-top:18px}.dialog{padding:18px}.dob-grid{gap:7px}}
 
+.qr-payment-card{display:grid;grid-template-columns:1fr 220px;gap:18px;align-items:center;padding:18px;border:1px solid #e9c58b4d;border-radius:18px;background:#ffffff05;margin:18px 0}.qr-price{font-size:2.5rem;line-height:1.1;font-weight:900;color:var(--gold)}.qr-placeholder{width:100%;max-width:220px;margin:auto;background:#fff;border-radius:14px;padding:8px}.qr-placeholder svg{display:block;width:100%;height:auto}.qr-warning{grid-column:1/-1;margin:0;color:#f3d9b1;font-size:.84rem}.qr-payment-card .muted{margin:4px 0}.field-help{display:block;font-size:.78rem;color:var(--muted);margin-top:4px}@media(max-width:520px){.qr-payment-card{grid-template-columns:1fr;text-align:center}.qr-placeholder{max-width:200px}.qr-warning{grid-column:auto}}
 </style>
 </head>
 <body>
@@ -107,7 +108,33 @@
 <button class="btn primary" id="submit" style="width:100%" type="submit">Submit registration</button>
 <div class="status" id="status" role="status" aria-live="polite"></div>
 <p class="fine">Your registration is saved as Unpaid until payment is verified. Your team begins work only after verified payment. Do not enter your exact home address or sensitive personal information.</p>
-</form><div id="payment-panel" class="hidden"><div class="notice">Registration saved. Payment status remains <b>Unpaid</b> until the server verifies successful payment.</div><button class="btn primary" id="pay" style="width:100%" type="button">Continue to secure ₹99 payment</button><p class="fine">After payment, we aim to contact you within 24 hours using your selected method.</p></div>
+</form><div id="payment-panel" class="hidden">
+<div class="notice"><b>Registration saved.</b> Pay ₹99 using the QR code below, then upload your payment screenshot. Your payment remains pending until it is manually checked.</div>
+<div class="qr-payment-card">
+  <div class="qr-payment-heading"><span class="kicker">UPI PAYMENT</span><div class="qr-price">₹99</div><p class="muted">One-time registration fee</p></div>
+  <div class="qr-placeholder" role="img" aria-label="Temporary QR placeholder, not scannable">
+    <svg viewBox="0 0 220 220" aria-hidden="true">
+      <rect width="220" height="220" rx="14" fill="#fff"/>
+      <g fill="#211019">
+        <path d="M18 18h54v54H18z M28 28v34h34V28z M36 36h18v18H36z"/>
+        <path d="M148 18h54v54h-54z M158 28v34h34V28z M166 36h18v18h-18z"/>
+        <path d="M18 148h54v54H18z M28 158v34h34v-34z M36 166h18v18H36z"/>
+        <path d="M88 18h12v12H88z M112 18h12v24h-12z M88 42h24v12H88z M124 54h12v12h-12z M88 66h12v24H88z M112 78h24v12h-24z M148 84h12v12h-12z M172 84h30v12h-30z M78 102h12v12H78z M102 102h24v12h-24z M138 102h12v24h-12z M162 102h12v12h-12z M186 102h12v24h-12z M18 88h24v12H18z M42 112h12v24H42z M66 124h24v12H66z M90 138h12v12H90z M114 138h12v24h-12z M138 150h12v12h-12z M162 138h12v24h-12z M186 150h12v12h-12z M84 174h12v28H84z M108 174h24v12h-24z M144 180h12v22h-12z M168 174h12v12h-12z M192 180h10v22h-10z"/>
+      </g>
+      <rect x="35" y="91" width="150" height="38" rx="8" fill="#f06b86"/>
+      <text x="110" y="106" text-anchor="middle" font-size="10" font-weight="900" fill="#270b14">QR PLACEHOLDER</text>
+      <text x="110" y="119" text-anchor="middle" font-size="8" font-weight="700" fill="#270b14">NOT SCANNABLE</text>
+    </svg>
+  </div>
+  <p class="qr-warning">Temporary image only — this is <b>not a real payment QR</b>. The owner must replace it with their actual UPI QR before accepting payments.</p>
+</div>
+<form id="proof-form">
+  <div class="field full"><label for="payment-screenshot">Upload payment screenshot</label><input id="payment-screenshot" type="file" accept="image/jpeg,image/png,image/webp" required><span class="field-help">JPG, PNG or WebP · Maximum 5 MB. Hide unrelated personal details before uploading.</span></div>
+  <button class="btn primary" id="submit-proof" style="width:100%;margin-top:14px" type="submit">Submit payment screenshot</button>
+</form>
+<div class="status" id="payment-status" role="status" aria-live="polite"></div>
+<p class="fine">Uploading a screenshot does not automatically verify payment. The team will check the transaction before marking it paid.</p>
+</div>
 </div></div>
 <script src="https://checkout.razorpay.com/v1/checkout.js" defer></script>
 <script>
@@ -186,6 +213,28 @@ form.addEventListener('submit',async e=>{
  finally{btn.disabled=false;btn.textContent='Submit registration'}
 });
 
-document.getElementById('pay').addEventListener('click',async()=>{if(!registrationId)return;const btn=document.getElementById('pay');btn.disabled=true;btn.textContent='Opening secure checkout…';try{const res=await fetch(SUPABASE_URL+'/functions/v1/create-order',{method:'POST',headers:{'Content-Type':'application/json','apikey':SUPABASE_PUBLISHABLE_KEY,'Authorization':'Bearer '+SUPABASE_PUBLISHABLE_KEY},body:JSON.stringify({registration_id:registrationId})});if(!res.ok)throw new Error('Secure payment is not configured yet. Your registration is saved as Unpaid; please try again later.');const order=await res.json();if(!window.Razorpay)throw new Error('Payment checkout did not load. Please refresh and try again.');const checkout=new Razorpay({key:order.keyId,amount:order.amount,currency:order.currency, name:'Crimson Romance',description:'₹99 service fee',order_id:order.orderId,prefill:{name:registrationContact.full_name},theme:{color:'#f06b86'},handler:async response=>{const verify=await fetch(SUPABASE_URL+'/functions/v1/verify-payment',{method:'POST',headers:{'Content-Type':'application/json','apikey':SUPABASE_PUBLISHABLE_KEY,'Authorization':'Bearer '+SUPABASE_PUBLISHABLE_KEY},body:JSON.stringify({...response,registration_id:registrationId})});if(!verify.ok){message('Payment submitted, but verification is pending. Do not pay again. Our team will review the transaction.',true);return}message('Payment verified successfully. Our team aims to contact you within 24 hours using your selected contact method.');document.getElementById('pay').classList.add('hidden')},modal:{ondismiss:()=>{btn.disabled=false;btn.textContent='Continue to secure ₹99 payment'}}});checkout.open()}catch(err){message(err.message||'Could not open payment checkout.',true);btn.disabled=false;btn.textContent='Continue to secure ₹99 payment'}});
+
+const proofForm=document.getElementById('proof-form'),proofInput=document.getElementById('payment-screenshot'),proofStatus=document.getElementById('payment-status'),proofButton=document.getElementById('submit-proof');
+function paymentMessage(text,error=false){proofStatus.textContent=text;proofStatus.classList.toggle('error',error);proofStatus.classList.add('show')}
+proofForm.addEventListener('submit',async e=>{
+ e.preventDefault();
+ if(!registrationId){paymentMessage('Your registration reference is missing. Please contact the team before paying.',true);return}
+ const file=proofInput.files&&proofInput.files[0];
+ if(!file){paymentMessage('Please select your payment screenshot.',true);return}
+ if(!['image/jpeg','image/png','image/webp'].includes(file.type)){paymentMessage('Please upload a JPG, PNG or WebP image.',true);return}
+ if(file.size>5*1024*1024){paymentMessage('The screenshot must be 5 MB or smaller.',true);return}
+ proofButton.disabled=true;proofButton.textContent='Uploading screenshot…';
+ try{
+  const ext=file.type==='image/jpeg'?'jpg':file.type==='image/png'?'png':'webp';
+  const path=registrationId+'/'+crypto.randomUUID()+'.'+ext;
+  const upload=await fetch(SUPABASE_URL+'/storage/v1/object/payment-proofs/'+path,{method:'POST',headers:{'apikey':SUPABASE_PUBLISHABLE_KEY,'Authorization':'Bearer '+SUPABASE_PUBLISHABLE_KEY,'Content-Type':file.type,'x-upsert':'false'},body:file});
+  if(!upload.ok){let detail='';try{const b=await upload.json();detail=b.message||b.error||''}catch{}throw new Error(detail||'Screenshot upload failed. Please try again.')}
+  const attach=await fetch(SUPABASE_URL+'/rest/v1/rpc/attach_payment_proof',{method:'POST',headers:{'Content-Type':'application/json','apikey':SUPABASE_PUBLISHABLE_KEY,'Authorization':'Bearer '+SUPABASE_PUBLISHABLE_KEY},body:JSON.stringify({p_registration_id:registrationId,p_object_path:path})});
+  if(!attach.ok)throw new Error('Screenshot uploaded, but could not link it to your registration. Please contact the team and do not pay again.');
+  paymentMessage('Screenshot submitted successfully. Your payment is pending manual verification; do not pay again unless the team confirms the first transaction failed.');
+  proofInput.disabled=true;proofButton.classList.add('hidden');
+ }catch(err){paymentMessage(err.message||'Could not submit screenshot. Please try again.',true);proofButton.disabled=false;proofButton.textContent='Submit payment screenshot'}
+});
+
 </script>
 </body></html>
