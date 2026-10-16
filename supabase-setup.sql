@@ -62,3 +62,82 @@ grant update (payment_status, payment_reference, match_status, work_status, admi
 -- it validates DOB/18+, consent, interests, and required contact details before inserting.
 revoke execute on function public.submit_registration(jsonb) from public, authenticated;
 grant execute on function public.submit_registration(jsonb) to anon;
+
+
+-- Private payment screenshot storage for the manual ₹99 UPI flow.
+alter table public.registrations
+  add column if not exists payment_screenshot_path text;
+
+create schema if not exists private;
+revoke all on schema private from public, anon, authenticated;
+grant usage on schema private to anon, authenticated;
+
+create or replace function private.registration_is_pending(p_registration_id uuid)
+returns boolean
+language sql
+stable
+security definer
+set search_path = ''
+as $$
+  select exists (
+    select 1 from public.registrations r
+    where r.id = p_registration_id and r.payment_status = 'pending'
+  );
+$$;
+revoke all on function private.registration_is_pending(uuid) from public;
+grant execute on function private.registration_is_pending(uuid) to anon, authenticated;
+
+insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
+values ('payment-proofs', 'payment-proofs', false, 5242880, array['image/jpeg','image/png','image/webp'])
+on conflict (id) do update
+set public = false, file_size_limit = 5242880, allowed_mime_types = array['image/jpeg','image/png','image/webp'];
+
+drop policy if exists "Visitors can upload pending registration payment proof" on storage.objects;
+create policy "Visitors can upload pending registration payment proof"
+on storage.objects for insert to anon
+with check (
+  bucket_id = 'payment-proofs'
+  and case
+    when (storage.foldername(name))[1] ~* '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'
+    then private.registration_is_pending(((storage.foldername(name))[1])::uuid)
+    else false
+  end
+);
+
+drop policy if exists "Admins can view payment proof files" on storage.objects;
+create policy "Admins can view payment proof files"
+on storage.objects for select to authenticated
+using (
+  bucket_id = 'payment-proofs'
+  and exists (select 1 from public.admin_users a where a.user_id = (select auth.uid()))
+);
+
+create or replace function public.attach_payment_proof(p_registration_id uuid, p_object_path text)
+returns boolean
+language plpgsql
+security definer
+set search_path = ''
+as $$
+begin
+  if p_object_path is null
+     or left(p_object_path, length(p_registration_id::text) + 1) <> (p_registration_id::text || '/')
+     or length(p_object_path) > 300
+     or not exists (
+       select 1 from storage.objects o
+       where o.bucket_id = 'payment-proofs' and o.name = p_object_path
+     ) then
+    raise exception 'Invalid payment proof upload';
+  end if;
+
+  update public.registrations
+  set payment_screenshot_path = p_object_path
+  where id = p_registration_id and payment_status = 'pending';
+
+  if not found then
+    raise exception 'Registration not found or payment is no longer pending';
+  end if;
+  return true;
+end;
+$$;
+revoke all on function public.attach_payment_proof(uuid, text) from public, authenticated;
+grant execute on function public.attach_payment_proof(uuid, text) to anon;
