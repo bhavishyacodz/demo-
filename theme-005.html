@@ -136,7 +136,6 @@
 <p class="fine">Uploading a screenshot does not automatically verify payment. The team will check the transaction before marking it paid.</p>
 </div>
 </div></div>
-<script src="https://checkout.razorpay.com/v1/checkout.js" defer></script>
 <script>
 const SUPABASE_URL='https://vpuvcgtmwwherjbzenzq.supabase.co';
 const SUPABASE_PUBLISHABLE_KEY='sb_publishable_imkR6vzC-g9f5-DeIi4wOw_qlSHU5Pj';
@@ -208,7 +207,7 @@ form.addEventListener('submit',async e=>{
   if(typeof registrationId!=='string'||!registrationId)throw new Error('Registration was received but its reference could not be retrieved. Please contact the team before paying.');
   registrationContact={full_name:payload.full_name,contact_method:payload.contact_method};
   form.classList.add('hidden');document.getElementById('payment-panel').classList.remove('hidden');
-  message('Registration received. Continue to the secure checkout to pay ₹99. Work starts only after payment is verified.');
+  paymentMessage('Registration saved. Use the QR placeholder only after the real UPI QR is added, then upload your payment screenshot.');
  }catch(err){message(err.message||'Could not save registration. Please try again.',true)}
  finally{btn.disabled=false;btn.textContent='Submit registration'}
 });
